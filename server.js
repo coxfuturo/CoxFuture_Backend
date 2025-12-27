@@ -36,11 +36,15 @@ app.use(
 app.use(express.json());
 
 // Routes
+<<<<<<< Updated upstream
 app.use('/api/enquiry', enquiryRoutes);
 app.use('/api', Career);
+=======
+app.use('/enquiry', enquiryRoutes);
+>>>>>>> Stashed changes
 
 // Root route
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   res.send('Node.js backend running...');
 });
 
