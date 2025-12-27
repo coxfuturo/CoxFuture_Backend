@@ -34,9 +34,10 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22
           script: |
             cd ${{ secrets.APP_DIR }}
-            git pull origin main
+            git pull origin main        
             npm install
             pm2 restart all || pm2 start server.js --name backend
