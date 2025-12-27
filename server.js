@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const enquiryRoutes = require('./routes/enquiryRoutes');
+const Career =require('./routes/careerRoutes')
 const cors = require("cors");
 
 dotenv.config();
@@ -19,7 +20,6 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function(origin, callback) {
-      // allow requests with no origin (like Postman or curl)
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) === -1) {
         const msg = "The CORS policy for this site does not allow access from the specified Origin.";
@@ -37,6 +37,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/enquiry', enquiryRoutes);
+app.use('/api', Career);
 
 // Root route
 app.get('/', (req, res) => {
